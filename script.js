@@ -4,11 +4,14 @@ setInterval(function() {
 	
 	for(var i = 0; i < length; ++i)
 		if(elements[i].ariaLabel === 'Yes') {
-			elements[i].click();
-			console.log("Clicked 'Yes' on ", document.title);
+			const style = window.getComputedStyle(elements[i]);
+			if(!(style.display === 'none' || style.visibility === 'hidden'))
+			{
+				elements[i].click();
+				console.log(Date.now(), "Clicked 'Yes' on", document.title);
+			}
 		}
 	
-	//console.log(Date.now(), "running in", document.title);
 }, 5000);
 
 console.log("sapporo to new innocence");
